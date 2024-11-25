@@ -1,0 +1,18 @@
+{
+  "version": 2,
+  "dgSpecHash": "FrcZhzwu5eI9MMV44q25G1U863E7eOuaKQUQLtEdRjM+GLLA4rJvG9vPCt53T6n8EySihUarYbuoAo8myumzOw==",
+  "success": false,
+  "projectFilePath": "C:\\Users\\sdaware\\OneDrive - Nice Systems Ltd\\Desktop\\Code\\DockerImageModification\\DockerImageModification.csproj",
+  "expectedPackageFiles": [],
+  "logs": [
+    {
+      "code": "NU1100",
+      "level": "Error",
+      "message": "Unable to resolve 'Microsoft.VisualStudio.Azure.Containers.Tools.Targets (>= 1.19.5)' for 'net8.0'. PackageSourceMapping is enabled, the following source(s) were not considered: Microsoft Visual Studio Offline Packages, nuget.org.",
+      "libraryId": "Microsoft.VisualStudio.Azure.Containers.Tools.Targets",
+      "targetGraphs": [
+        "net8.0"
+      ]
+    }
+  ]
+}
