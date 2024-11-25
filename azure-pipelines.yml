@@ -1,0 +1,35 @@
+# ASP.NET Core (.NET Framework)
+# Build and test ASP.NET Core projects targeting the full .NET Framework.
+# Add steps that publish symbols, save build artifacts, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/dotnet-core
+
+trigger:
+- Azure_Secure_File
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+variables:
+  buildConfigurationLab: 'Debug'
+  buildConfigurationProd: 'Release'
+  dotnetVersion: "netcoreapp3.1"
+
+steps:
+###
+## Lab
+###
+- script: dotnet publish EnterpriseTools/EnterpriseToolsAPI/ --configuration $(buildConfigurationLab)
+  displayName: 'dotnet publish $(buildConfigurationLab)'
+
+- task: CopyFiles@2
+  displayName: 'Copy Files $(buildConfigurationLab)'
+  inputs:
+    Contents: 'EnterpriseTools/EnterpriseToolsAPI/bin/$(buildConfigurationLab)/$(dotnetVersion)/publish/**'
+    TargetFolder: '$(build.artifactstagingdirectory)/$(buildConfigurationLab)'
+
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish Artifacts $(buildConfigurationLab)'
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)/$(buildConfigurationLab)'
+    ArtifactName: 'enterprisetoolsapilab'
+    publishLocation: 'Container'
